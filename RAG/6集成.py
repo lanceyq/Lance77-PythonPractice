@@ -69,7 +69,7 @@ def run():
     qs = "我有点感冒，我应该开什么药"
     qs_embedding = ollama_embedding_by_api(qs)
 
-    client = chromadb.PersistentClient(path="db/chroma_demo")
+    client = chromadb.PersistentClient(path="RAG/db/chroma_demo")
     collection = client.get_collection(name="collection_v2")
     res = collection.query(query_embeddings=[qs_embedding, ], query_texts=qs, n_results=2)
     result = res["documents"][0]
